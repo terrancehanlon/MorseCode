@@ -1,0 +1,41 @@
+<div class="container">
+    <input type="text" id="inputText" placeholder="Enter codes seperated by dash"  style="width: 500px"/> <br/>
+    <button onclick="decipher( (document.getElementById('inputText') ).value )"> get code</button>  
+</div>
+<br/>
+<label id="output" style="font-size: 3em"></label>
+<style>
+    .container{
+        margin-top: 15%;
+        text-align: center;
+
+    }
+
+</style>
+<script>
+    function decipher(code){
+        const morseCode = {
+            '.-' : 'A', '-..' : 'B', '-.-.' : 'C', '-..' : 'D', '.' : 'E', '..-.' : 'F',
+            '--.' : 'G', '....' : 'H', '..' : 'I', '.---' : 'J', '-.-' : 'K', '.-..' : 'L', 
+            '--' : 'M', '-.' : 'N', '---' : 'O', '.--.' : 'P', '--.-' : 'Q', '.-.' : 'R',
+            '...' : 'S', '-' : 'T', '..-' : 'U', '..-' : 'V', '.--' : 'W', '-..-' : 'X',
+            '-.--' : 'Y', '--..' : 'Z' 
+        }
+        
+        let full_code = code.split(' ');
+        let dechipered = '';
+
+            for(let char of full_code){
+                if(typeof morseCode[char] == 'undefined'){
+                    window.alert('INVALID MORSE CODE');
+                    return;
+                }
+                dechipered += morseCode[char];
+                full_code += ' ';
+            }
+   
+        document.getElementById('output').textContent = dechipered;
+        
+    }
+
+</script>
